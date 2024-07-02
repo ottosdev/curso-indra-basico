@@ -1,0 +1,20 @@
+{
+  "produtos": [
+    {
+      "id": 1,
+      "nome": "Mouse Logitech",
+      "preco": 400.00
+    },
+    {
+      "id": 2,
+      "nome": "PS5",
+      "preco": 3000.00
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "João"
+    }
+  ]
+}
