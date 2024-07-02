@@ -1,8 +1,35 @@
-import { CgDetailsMore } from "react-icons/cg";
-import { IoMdTrash } from "react-icons/io";
+import {CgDetailsMore} from "react-icons/cg";
+import {IoMdTrash} from "react-icons/io";
 import {IoPencil} from "react-icons/io5";
+import {useEffect, useState} from "react";
+import {api} from "../service/api.ts";
+
+interface ProdutoProps {
+    id: number;
+    nome: string;
+    preco: number;
+}
 
 export default function DashBoard() {
+    const [produtos, setProdutos] = useState<ProdutoProps[]>([]);
+    const [loadingProdutos, setLoadingProdutos] = useState(true);
+
+    async function getProdutos() {
+        try {
+            const response = await api.get('/produtos');
+            const data = await response.data;
+            setProdutos(data);
+
+        } catch (error) {
+            alert("Dados nao encontrados")
+        } finally {
+            setLoadingProdutos(false)
+        }
+    }
+
+    useEffect(() => {
+        getProdutos();
+    }, []);
 
     return (
         <div className='dashboard'>
@@ -15,12 +42,13 @@ export default function DashBoard() {
                     <button className='dash-add'>+ Adicionar Item</button>
                 </form>
             </div>
-
-            {Array.from({length: 20}).map((_, index) => (
-                <div className='dash-item' key={index}>
+            {loadingProdutos && <p>Carregando...</p> }
+            {!produtos.length && <p style={{textAlign: 'center', marginTop: 24}}>Nenhum dado encontrado</p> }
+            {produtos.map((produto) => (
+                <div className='dash-item' key={produto.id}>
                     <div>
-                        <h3>Nome:  {index}</h3>
-                        <p>Preço: {index}</p>
+                        <h3>{produto.nome}</h3>
+                        <p>{produto.preco.toFixed(2)}</p>
                     </div>
 
                     <div className='dash-item-actions'>
