@@ -3,7 +3,11 @@ import { IoMdTrash } from "react-icons/io";
 import {IoPencil} from "react-icons/io5";
 
 export default function DashBoard() {
-
+    // TODO: Buscar os dados do produtos
+    // TODO: Adicioanar a funcionalidade de adicionar um novo produto
+    // TODO: Adicioanar a funcionalidade de editar um produto
+    // TODO: Adicioanar a funcionalidade de deletar um produto
+    // TODO: Adicioanar a funcionalidade de visualizar os detalhes do produto ( mostrar roteamento )
     return (
         <div className='dashboard'>
             <div className='dash-header'>

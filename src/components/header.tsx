@@ -4,6 +4,7 @@ interface Props {
 }
 
 export default function Header(props: Props) {
+    // TODO: Buscar a url da imagem no contexto do usuario
     return (
         <header className='header'>
             <h1>{props.titulo}</h1>
