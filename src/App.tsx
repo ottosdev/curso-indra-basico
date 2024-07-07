@@ -1,6 +1,6 @@
-import DashBoard from "./pages/dashboard.tsx";
-import Header from "./components/header.tsx";
-import Footer from "./components/footer.tsx";
+import DashBoard from "./pages/Dashboard/dashboard.tsx";
+import Header from "./components/Header/header.tsx";
+import Footer from "./components/Footer/footer.tsx";
 
 export default function App() {
 

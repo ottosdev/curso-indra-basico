@@ -2,7 +2,8 @@ import {CgDetailsMore} from "react-icons/cg";
 import {IoMdTrash} from "react-icons/io";
 import {IoPencil} from "react-icons/io5";
 import {useEffect, useState} from "react";
-import {api} from "../service/api.ts";
+import styles from '../Dashboard/dashboard.module.css';
+import {api} from "../../service/api.ts";
 
 interface ProdutoProps {
     id: number;
@@ -26,7 +27,7 @@ export default function DashBoard() {
             setProdutos(data);
 
         } catch (error) {
-            alert("Dados nao encontrados")
+            // alert("Dados nao encontrados")
         } finally {
             setLoadingProdutos(false)
         }
@@ -37,26 +38,26 @@ export default function DashBoard() {
     }, []);
 
     return (
-        <div className='dashboard'>
-            <div className='dash-header'>
+        <div className={styles.dashboard}>
+            <div className={styles.dashHeader}>
                 <h2>Listagem de Items</h2>
 
-                <form>
-                    <input placeholder='Nome do item'/>
-                    <input placeholder='Preço'/>
-                    <button className='dash-add'>+ Adicionar Item</button>
+                <form className={styles.form}>
+                    <input className={styles.input} placeholder='Nome do item'/>
+                    <input className={styles.input} placeholder='Preço'/>
+                    <button className={styles.dashAdd}>+ Adicionar Item</button>
                 </form>
             </div>
             {loadingProdutos && <p>Carregando...</p> }
             {!produtos.length && <p style={{textAlign: 'center', marginTop: 24}}>Nenhum dado encontrado</p> }
             {produtos.map((produto) => (
-                <div className='dash-item' key={produto.id}>
+                <div className={styles.dashItem} key={produto.id}>
                     <div>
                         <h3>{produto.nome}</h3>
                         <p>{produto.preco.toFixed(2)}</p>
                     </div>
 
-                    <div className='dash-item-actions'>
+                    <div className={styles.dashItemActions}>
                         <button className='edit'>
                             <CgDetailsMore size={16}/>
                         </button>
