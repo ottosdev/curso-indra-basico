@@ -1,15 +1,8 @@
 import {CgDetailsMore} from "react-icons/cg";
 import {IoMdTrash} from "react-icons/io";
 import {IoPencil} from "react-icons/io5";
-import {useEffect, useState} from "react";
-import styles from '../Dashboard/dashboard.module.css';
-import {api} from "../../service/api.ts";
 
-interface ProdutoProps {
-    id: number;
-    nome: string;
-    preco: number;
-}
+import styles from '../Dashboard/dashboard.module.css';
 
 export default function DashBoard() {
     // TODO: Buscar os dados do produtos
@@ -17,25 +10,7 @@ export default function DashBoard() {
     // TODO: Adicioanar a funcionalidade de editar um produto
     // TODO: Adicioanar a funcionalidade de deletar um produto
     // TODO: Adicioanar a funcionalidade de visualizar os detalhes do produto ( mostrar roteamento )
-    const [produtos, setProdutos] = useState<ProdutoProps[]>([]);
-    const [loadingProdutos, setLoadingProdutos] = useState(true);
 
-    async function getProdutos() {
-        try {
-            const response = await api.get('/produtos');
-            const data = await response.data;
-            setProdutos(data);
-
-        } catch (error) {
-            // alert("Dados nao encontrados")
-        } finally {
-            setLoadingProdutos(false)
-        }
-    }
-
-    useEffect(() => {
-        getProdutos();
-    }, []);
 
     return (
         <div className={styles.dashboard}>
@@ -48,13 +23,11 @@ export default function DashBoard() {
                     <button className={styles.dashAdd}>+ Adicionar Item</button>
                 </form>
             </div>
-            {loadingProdutos && <p>Carregando...</p> }
-            {!produtos.length && <p style={{textAlign: 'center', marginTop: 24}}>Nenhum dado encontrado</p> }
-            {produtos.map((produto) => (
-                <div className={styles.dashItem} key={produto.id}>
+            {Array.from({length: 5}).map((_, index) => (
+                <div className={styles.dashItem} key={index}>
                     <div>
-                        <h3>{produto.nome}</h3>
-                        <p>{produto.preco.toFixed(2)}</p>
+                        <h3>Nome {index}</h3>
+                        <p>Preço: {index}</p>
                     </div>
 
                     <div className={styles.dashItemActions}>
