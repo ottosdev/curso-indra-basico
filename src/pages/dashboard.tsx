@@ -11,6 +11,11 @@ interface ProdutoProps {
 }
 
 export default function DashBoard() {
+    // TODO: Buscar os dados do produtos
+    // TODO: Adicioanar a funcionalidade de adicionar um novo produto
+    // TODO: Adicioanar a funcionalidade de editar um produto
+    // TODO: Adicioanar a funcionalidade de deletar um produto
+    // TODO: Adicioanar a funcionalidade de visualizar os detalhes do produto ( mostrar roteamento )
     const [produtos, setProdutos] = useState<ProdutoProps[]>([]);
     const [loadingProdutos, setLoadingProdutos] = useState(true);
 
